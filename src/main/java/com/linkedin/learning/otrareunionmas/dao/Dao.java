@@ -21,7 +21,7 @@ public interface Dao<T> {
 	 */
 	List<T> getAll();
 	
-	void save();
+	void save(T t);
 	
 	void update(T t);
 	
