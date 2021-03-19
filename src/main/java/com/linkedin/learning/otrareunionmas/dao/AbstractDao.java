@@ -1,6 +1,7 @@
 package com.linkedin.learning.otrareunionmas.dao;
 
 import java.util.List;
+
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -11,6 +12,13 @@ import javax.transaction.Transactional.TxType;
 
 import com.linkedin.learning.otrareunionmas.utiles.EntityManagerUtil;
 
+/**
+ * 
+ * @author Cristhian Alexis
+ *
+ * @param <T>
+ * Implementa la clase DAO, con operaciones básicas para cada entidad
+ */
 public  abstract class AbstractDao<T> implements Dao<T> {
 //	la clase con la que de trabajar en su momento, no se inicializa ya que no se sabe que valor utilizará 
 	private Class<T> clazz;
