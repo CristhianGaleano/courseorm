@@ -30,13 +30,13 @@ public  abstract class AbstractDao<T> implements Dao<T> {
 	@Override
 	public Optional<T> get(long id) {
 //		le pasamos la clase de la entidad para que sepa en que clase buscar, Optional para en caso de que no encuentre nada
-		return Optional.ofNullable(manager.find(clazz, id)); 
+		return Optional.ofNullable(getManager().find(clazz, id)); 
 	}
 
 	@Override
 	public List<T> getAll() {
 		String qlString = "FROM " + clazz.getName();	 
-		Query query = manager.createQuery(qlString);
+		Query query = getManager().createQuery(qlString);
 		return query.getResultList();
 	}
 
@@ -65,15 +65,19 @@ public  abstract class AbstractDao<T> implements Dao<T> {
 	
 	
 	private void executeInsideTransaction(Consumer<EntityManager> action) {
-		EntityTransaction tx = manager.getTransaction();
+		EntityTransaction tx = getManager().getTransaction();
 		try {
 			tx.begin();
-			action.accept(manager);
+			action.accept(getManager());
 			tx.commit();
 		} catch (RuntimeException e) {
 			tx.rollback();
 			throw e;
 		}
+	}
+
+	public EntityManager getManager() {
+		return manager;
 	}
 	
 	
