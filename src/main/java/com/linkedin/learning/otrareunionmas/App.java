@@ -8,7 +8,9 @@ import java.util.List;
 import javax.persistence.NoResultException;
 
 import com.linkedin.learning.otrareunionmas.dao.ReunionDao;
+import com.linkedin.learning.otrareunionmas.dao.SalaDao;
 import com.linkedin.learning.otrareunionmas.dominio.Reunion;
+import com.linkedin.learning.otrareunionmas.dominio.Sala;
 
 /**
  * Hello world!
@@ -41,5 +43,30 @@ public class App
         
         List<Reunion> reunionesayana = dao.reunionesMayana();
         System.out.println("Para mañana: " + reunionesayana);
+        
+        
+        SalaDao daoSala = new SalaDao();
+        
+        Sala sala = new Sala("S201", "sala grande", 25);
+        daoSala.save(sala); 
+        System.out.println("Paso 1 " + daoSala.getAll());
+        
+       sala.setDescripcion("Ampliada");
+       daoSala.update(sala);
+       System.out.println("Paso 2 " + daoSala.getAll());
+       
+       Sala sala2 = new Sala("S202", "sala mediana", 19);
+       daoSala.save(sala2); 
+       System.out.println("Paso 3 " + daoSala.getAll());
+       
+       daoSala.delete(sala2);
+       System.out.println("Paso 4 " + daoSala.getAll());
+       
+       
+       
+       
+       
+       
+       
     }
 }

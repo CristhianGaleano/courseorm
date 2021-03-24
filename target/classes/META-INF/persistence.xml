@@ -8,11 +8,14 @@
   	 <properties>
       <property name="hibernate.show.sql" value="true"/>
       <!-- cuando nos conectamos desde JPA se debe elegir el tipo de motor -->
-      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/otrareunionmas?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.schema-generation.database.action" value="update"/>
+      
+      
       
     </properties>
   </persistence-unit>
